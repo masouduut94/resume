@@ -1,0 +1,413 @@
+\documentclass[10pt]{article}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}%
+        {\vspace{-\baselineskip}\begin{list}{}{%
+       \setlength{\leftmargin}{\bibhang}%
+       \setlength{\itemindent}{-\leftmargin}%
+       \setlength{\itemsep}{\bibsep}%
+       \setlength{\parsep}{\z@}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=0.8in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=0.5in,               % 1 inch margins
+            includemp]{geometry}
+
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+%% This gives us fun enumeration environments. compactitem will be nice.
+\usepackage{paralist}
+
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+\renewcommand{\section}[2]%
+        {\pagebreak[3]\vspace{1.3\baselineskip}%
+         \phantomsection\addcontentsline{toc}{section}{#1}%
+         \hspace{0in}%
+         \marginpar{
+         \raggedright \scshape #1}#2}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{compactitem}[#1]}{\end{compactitem}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\vspace{-\baselineskip}\begin{compactitem}[#1]}
+        {\end{compactitem}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
+\providecommand*\url[1]{\href{#1}{#1}}
+% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
+\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+\providecommand*\email[1]{\href{mailto:#1}{#1}}
+% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
+%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
+
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    \TeX}}
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+\begin{document}
+\makeheading{\textbf{Masoud Masoumi Moghadam}}
+
+\section{Contact Info}
+\newlength{\rcollength}\setlength{\rcollength}{2.5in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+
+Mashhad, Iran & masoud.masoumi.moghadam@gmail.com\\
++989151234749 & www.linkedin.com/in/masoud-masoumi-moghadam/\\
+
+
+%& \textit{WWW:}
+%\href{http://ee.sharif.edu/~mmahzoon}{ee.sharif.edu/\sim mmahzoon}\\
+\end{tabular}
+
+\section{Research Interests}
+\begin{loneinnerlist}
+\item
+Reinforcement Learning
+\item
+Comupter Vision
+\item
+Machine Learning
+\item
+Deep Learning
+\item
+Knowledge Distillation
+\end{loneinnerlist}
+
+
+%\end{loneinnerlist}%
+
+\blankline
+
+\section{Education}
+\href{http://en.uut.ac.ir/}{\textbf{Urmia University of Technology}},
+West Azerbaijan, Iran
+\begin{outerlist}
+\item[] Master of Science in
+        \href{http://en.uut.ac.ir/itTeacher}
+             {Information Technology Engineering},
+             Sep. 2015 -- Jan. 2018
+        \begin{innerlist}
+        %\item Thesis: \emph{}
+        \item \textbf{GPA: 4.11/5.0} (133 credit hours passed)
+        \item \textbf{Selected Coursework}: Artificial Neural Network (19/20) - Machine Learning (19.5/20) - Evolutionary Algorithms (19/20) - Pattern Recognition (14/20) - Game Theory (15/20) - Data Mining (16/20) - Advanced Computer Network (15/20) - Digital Image Processing (17/20) - Advanced Operational System (19/20) - E-Commerce (16/20)
+        \item Advisers:
+        \href{http://en.uut.ac.ir/upload/Teacher/electrical/resume/pourmahmod.pdf}
+        {Prof. \textbf{Mohammad Pourmahmoud Aghababa}}, \href{http://facultystaff.urmia.ac.ir/Site/CV.aspx?STID=274&Ln=en}
+        {Prof. \textbf{Jamshid Bagherzadeh}}
+        \item Thesis: \emph{Monte Carlo Tree Search Optimization using quality-based rewards and RAVE values}
+        \end{innerlist}
+\end{outerlist}\\
+
+
+\hfill \break
+\href{https://aut.ac.ir/en}{\textbf{Payam Noor University of Neishaboor}},
+Khorasan Razavi, Iran
+\begin{outerlist}
+\item[] Bachelor of Science in
+        \href{http://ent.pnu.ac.ir/portal/home/?415499/Payame-Noor-University}
+             {Information Technology Engineering},
+             Sep. 2007 -- Jan. 2014
+        \begin{innerlist}
+        \item GPA: 3.8/5.0
+        %\&
+        %\href{http://ee.sharif.edu/~aref/}
+         %          {Prof. Mohammad Reza Aref}
+          %         \\
+        \end{innerlist}
+\end{outerlist}
+
+
+\blankline
+
+% \section{Online Courses}
+% Machine Learning - Deep Learning - Compiler - Data Pre-processing - Numerical Linear Algebra %Econometrics: Methods and Applications - Public Economics - Personal Finance - Financial Markets - Introduction to Corporate Finance - Financial Engineering and Risk Management - Social and Economic Networks: Models and Analysis %-
+%Market Analytics
+%Economics of Money and Banking
+%Fundamentals of Market Structure
+
+% \blankline
+
+\section{Computer Skills}
+\begin{loneinnerlist}
+%\item \textbf{Programming}:
+C/C++, Python, R, PHP, MySQL, MATLAB\\
+%Java,
+%Assembly(8085, 8051)\\
+%\halfblankline
+%\item \textbf{Applications}: MATLAB, Simulink, Octave, R, Excel\\
+%Codevision, Quartus, Pspice\\
+%Altium Designer, Autocad\\
+\end{loneinnerlist}
+
+\section{Frameworks}
+\begin{loneinnerlist}
+%\item \textbf{Programming}:
+\textbf{PyTorch, Tensorflow, Keras, OpenCV, Caffe, MXnet, Gensim, NLTK}
+
+\blankline
+
+
+%Java,
+%Assembly(8085, 8051)\\
+%\halfblankline
+%\item \textbf{Applications}: MATLAB, Simulink, Octave, R, Excel\\
+%Codevision, Quartus, Pspice\\
+%Altium Designer, Autocad\\
+\end{loneinnerlist}
+
+\blankline
+\section{Publications}
+\begin{loneinnerlist}
+\item \textbf{Improving Monte Carlo Tree Search by Combining RAVE and Quality-Based Rewards Algorithms}, Urmia University of Technology, Dec 2017 - Feb 2018.
+
+\begin{itemize}
+    \item[--]  In collaboration with Prof. Mohammad Pourmahmoud Aghababa and Dr. Jamshid Bagherzadeh.
+
+\end{itemize}
+
+\end{loneinnerlist}
+
+
+
+
+
+\section{Work Experience}
+\begin{loneinnerlist}
+\item \textbf{Machine Learning ● Computer Vision Expert}— \href{https://www.linkedin.com/company/partdp-ai/about/}{\textbf{PartAI Reserch Center, Mahshhad, Iran}} Aug 2019 -- Present
+
+\begin{itemize}
+
+    \item[--] \href{https://play.google.com/store/apps/details?id=ir.part.app.signal&hl=en_US}{\textbf{Signal application}}:  An advanced AI-based authentication system which includes 50 different solutions like face similarity detection, spoof attack detection, … .
+   \item[--] Real-time Pedestrian/Vehicle tracking and Re-Identification services like Deep-Sort.
+    \item[--] Deployed face recognition on embedded devices for a catering service automation .
+    \item[--] Illegal construction detection service on aerial (GIS) images using attention mechanism on CNN.
+    \item[--] Violence detection and spotting using 3d-CNN namely as "RWF-2000 flow-gated network" .
+    \item[--] Face similarity estimation using one-shot learning approach with Siamese networks.
+    \item[--] Forgery detection and spotting using error level analysis and luminance gradient features.
+
+\end{itemize}
+
+\item \textbf{Machine Learning ● Computer Vision Expert}— \href{https://www.natix.io}{\textbf{NATIX Edge vision, Hamburg, Germany}} Aug 2020 -- Dec 2020
+
+\begin{itemize}
+    \item[--] NATIX core concept is to utilize deep learning models on edge devices to detect relevant events and trigger corresponding actions afterward  so as to minimize the cloud dependency to diminish the customers` privacy concerns.
+
+    List of projects:
+    \item[--] \href{https://www.natix.io/products/virtual-doorman}{\textbf{Virtual Doorman AI}}: Deployed face/mask detection service on Virtual Doorman AI.
+    \item[--] Quantization and Deployment were further implemented on production to speed up the inference performance.
+    \item[--] Contribute to NATIX mask detection app on IOS platform using Turi framework.
+
+\end{itemize}
+
+
+\item \textbf{Data Scientist ● Backend Developer}— \href{https://neshan.org/}{\textbf{Neshan Maps, Mashhad, Iran}} Dec 2018 -- Jul 2019
+
+\begin{itemize}
+    \item[--] \href{https://play.google.com/store/apps/details?id=org.rajman.neshan.traffic.tehran.navigator&hl=en_US}{Neshan Maps application} is a professional platform that provides 2 major services for end users. Intelligent Transportation Service and location based services.
+
+    Tasks which I participated mostly:
+    \item[--] Analyse users' data stored in the data warehouse to find patterns of traffic behavior.
+    \item[--] Enhance the model for travel time prediction which improves the  Intelligent Transportation System for end-users.
+    \item[--] Optimizing the routing system utilizing the features found in traffic patterns.
+
+
+\end{itemize}
+
+
+
+\halfblankline
+
+
+\end{loneinnerlist}
+
+\section{Open source projects}
+\begin{loneinnerlist}
+
+\item \textbf{Deep Sort with Pytorch on RTSP camera implementation }, \href{https://www.natix.io/}{Natix Edge Vision}, Dec 2019 - Apr 2020
+\begin{itemize}
+    \item[--] In this project, I contributed to a pedestrian detection and tracking on live rtsp camera.
+    \item[--] \href{https://medium.com/natix-io/real-time-pedestrian-tracking-service-for-surveillance-cameras-using-pytorch-and-flask-6bc9810a4cb8}{\textbf{Article: An End-to-End Solution for Pedestrian Tracking on RTSP IP Camera feed Using Pytorch}}
+    \item[--] \href{https://github.com/ZQPei/deep_sort_pytorch}{\textbf{Github repository: Deep Sort with PyTorch (1.3 K stars)}}
+\end{itemize}
+
+\item \textbf{Monte Carlo Tree Search: Implementing Reinforcement Learning in Real-Time Game Player}, \href{https://partdp.ai/}{\textbf{PartAI Reserch Center}} Dec 2019 -- Jan 2020
+
+\begin{itemize}
+    \item[--] In this project, after I fully explained the basic concepts of reinforcement learning and its variant monte carlo tree search, I went through implementation of a basic no frills UCT algorithm in a board game named as HEX.
+    \item[--] \href{https://towardsdatascience.com/monte-carlo-tree-search-a-case-study-along-with-implementation-part-1-ebc7753a5a3b}{\textbf{Article 1: Basics of Reinforcement Learning}}
+    \item[--] \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-25b6f6ac3b43}{\textbf{Article 2: Basic Concepts of Monte Carlo Tree Search}}
+    \item[--] \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{\textbf{Article 3: Full implementation of framework in python}}
+    \item[--] \href{https://github.com/masouduut94/MCTS-agent-python}{\textbf{Github repository}}
+\end{itemize}
+
+\halfblankline
+\item \textbf{Performance Optimization of General Game Player using Cython and parallel simulation}, Urmia University of Technology, Jul 2016 - Nov 2016
+\begin{itemize}
+    \item[--] In this project, I boosted up the performance of GGP python framework by using cython and C extensions.
+    \item[--] \href{https://github.com/masouduut94/MCTS-agent-cythonized}{\textbf{Github repository: Ultimate Version of Real-time General Game Player in game of HEX.}}
+\end{itemize}
+\\
+
+
+\item \textbf{Training Multiple Deep Convolutional Neural Networks for Digikala Comment Verification dataset}, PartAI Research center, May 2019 - Jun 2019
+\begin{itemize}
+    \item[--] \href{https://github.com/masouduut94/Digikala_comments_verification}{\textbf{Github repository}}
+\end{itemize}
+
+\item \textbf{Using Genetic Algorithm to solve Traveling Salesman Problem (TSP) on NYC taxi dataset}, PartAI Research center, May 2019 - Jun 2019
+\begin{itemize}
+    \item[--] \href{https://github.com/masouduut94/genetic-algorithm-trip-optimizer}{\textbf{Github repository: Genetic Algorithm Trip Optimizer}}
+\end{itemize}
+
+\end{loneinnerlist}
+
+
+\section{Teaching \\Experience}
+\begin{loneinnerlist}
+\item Teaching Assistant, \textbf{Data Mining}, Urmia University of Technology, Spring 2017\\
+Supervisor:
+       \href{https://sarmady.com/siamak/}
+        {Prof. \textbf{Siamak Sarmady}}
+\halfblankline
+\\
+\item Teaching Assistant, \textbf{Basics of Machine Learning with python}, PartAI research center, August 2020 - September 2020\\
+
+
+\end{loneinnerlist}
+
+\blankline
+
+
+\section{Extra- \\ curricular \\ Activities}
+\begin{loneinnerlist}
+\item \textbf{The Lecturer of Machine Learning Workshop with Python}, PartAI research Center, May 2019
+
+\begin{itemize}
+    \item[--]  In this workshop, I presented the libraries of Python such as Numpy, Pandas, Scikit-Learn and Keras.
+\end{itemize}
+\blankline
+\section{References}
+\begin{loneinnerlist}
+
+\item
+\href{https://www.researchgate.net/scientific-contributions/Mohammad-Pourmahmood-Aghababa-78908453}
+        {Prof. \textbf{Mohammad Pourmahmoud Aghababa}} (m.p.aghababa@ee.uut.ac.ir)
+
+\item \href{http://uut.ac.ir/page.php?slct_pg_id=579&sid=2&slc_lang=fa}
+                   {Dr. \textbf{Vahid Soluk}} (v.solouk@it.uut.ac.ir)
+\item
+\href{http://uut.ac.ir/content/1969/Siamak-Sarmady}
+                   {Dr. \textbf{Siamak Sarmady}} (siamak.sarmady@gmail.com)
+\item
+  \href{http://uut.ac.ir/page.php?slct_pg_id=1087&sid=2&slc_lang=fa}
+                       {Dr. \textbf{Jafar Tahmoresnezhad}} (j.tahmores@it.uut.ac.ir)
+
+
+
+%\blankline
+\section{Hobbies}
+\begin{loneinnerlist}
+\item
+Volleyball
+\item
+ping pong
+\item
+Mountain Climbing
+\end{document}
