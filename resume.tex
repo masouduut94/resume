@@ -1,409 +1,247 @@
-\documentclass[10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.11 (19/6/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% This is a helpful package that puts math inside length specifications
-\usepackage{calc}
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
 
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 
-% Simpler bibsection for CV sections
-% (thanks to natbib for inspiration)
-\makeatletter
-\newlength{\bibhang}
-\setlength{\bibhang}{1em}
-\newlength{\bibsep}
-{\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
-\newenvironment{bibsection}%
-{\vspace{-\baselineskip}\begin{list}{}{%
-			\setlength{\leftmargin}{\bibhang}%
-			\setlength{\itemindent}{-\leftmargin}%
-			\setlength{\itemsep}{\bibsep}%
-			\setlength{\parsep}{\z@}%
-			\setlength{\partopsep}{0pt}%
-			\setlength{\topsep}{0pt}}}
-	{\end{list}\vspace{-.6\baselineskip}}
-\makeatother
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
 
-% Layout: Puts the section titles on left side of page
-\reversemarginpar
-
-
-%% Use these lines for A4-sized paper
-%\usepackage[paper=a4paper,
-%            %includefoot, % Uncomment to put page number above margin
-%            marginparwidth=30.5mm,    % Length of section titles
-%            marginparsep=1.5mm,       % Space between titles and text
-%            margin=25mm,              % 25mm margins
-%            includemp]{geometry}
-
-%% Use these lines for letter-sized paper
-\usepackage[paper=letterpaper,
-%includefoot, % Uncomment to put page number above margin
-marginparwidth=0.8in,     % Length of section titles
-marginparsep=.05in,       % Space between titles and text
-margin=0.5in,               % 1 inch margins
-includemp]{geometry}
-
-
-%% More layout: Get rid of indenting throughout entire document
-\setlength{\parindent}{0in}
-
-%% This gives us fun enumeration environments. compactitem will be nice.
-\usepackage{paralist}
-
-
-\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
-\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
-\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
-
-\usepackage{fancyhdr,lastpage}
-\pagestyle{fancy}
-%\pagestyle{empty}      % Uncomment this to get rid of page numbers
-\fancyhf{}\renewcommand{\headrulewidth}{0pt}
-\fancyfootoffset{\marginparsep+\marginparwidth}
-\newlength{\footpageshift}
-\setlength{\footpageshift}
-{0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
-\lfoot{\hspace{\footpageshift}%
-	\parbox{4in}{\, \hfill %
-		\arabic{page} of \protect\pageref*{LastPage} % +LP
-		%                    \arabic{page}                               % -LP
-		\hfill \,}}
-
-% Finally, give us PDF bookmarks
-\usepackage{color,hyperref}
-\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
-\hypersetup{colorlinks,breaklinks,
-	linkcolor=darkblue,urlcolor=darkblue,
-	anchorcolor=darkblue,citecolor=darkblue}
-
-\newcommand{\makeheading}[2][]%
-{\hspace*{-\marginparsep minus \marginparwidth}%
-	\begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
-		{\large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
-		\rule{\columnwidth}{1pt}%
-\end{minipage}}
-
-\renewcommand{\section}[2]%
-{\pagebreak[3]\vspace{1.3\baselineskip}%
-	\phantomsection\addcontentsline{toc}{section}{#1}%
-	\hspace{0in}%
-	\marginpar{
-		\raggedright \scshape #1}#2}
-
-% An itemize-style list with lots of space between items
-\newenvironment{outerlist}[1][\enskip\textbullet]%
-{\begin{itemize}[#1]}{\end{itemize}%
-	\vspace{-.6\baselineskip}}
-
-% An environment IDENTICAL to outerlist that has better pre-list spacing
-% when used as the first thing in a \section
-\newenvironment{lonelist}[1][\enskip\textbullet]%
-{\vspace{-\baselineskip}\begin{list}{#1}{%
-			\setlength{\partopsep}{0pt}%
-			\setlength{\topsep}{0pt}}}
-	{\end{list}\vspace{-.6\baselineskip}}
-
-% An itemize-style list with little space between items
-\newenvironment{innerlist}[1][\enskip\textbullet]%
-{\begin{compactitem}[#1]}{\end{compactitem}}
-
-% An environment IDENTICAL to innerlist that has better pre-list spacing
-% when used as the first thing in a \section
-\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
-{\vspace{-\baselineskip}\begin{compactitem}[#1]}
-	{\end{compactitem}\vspace{-.6\baselineskip}}
-
-% To add some paragraph space between lines.
-% This also tells LaTeX to preferably break a page on one of these gaps
-% if there is a needed pagebreak nearby.
-\newcommand{\blankline}{\quad\pagebreak[3]}
-\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
-
-% Uses hyperref to link DOI
-\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
-\newcommand\doi[1]{doi:\doilink{#1}}
-
-% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
-\providecommand*\url[1]{\href{#1}{#1}}
-% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
-\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
-
-% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
-\providecommand*\email[1]{\href{mailto:#1}{#1}}
-% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
-%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
-
-%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-%    \TeX}}
-\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-		\TeX}}
-\providecommand\Matlab{\textsc{Matlab}}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{hyperref}
+% \usepackage{xurl}
+\usepackage[scale=0.80]{geometry} % Reduce document margins
+\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+% \setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+ \newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+\firstname{Masoud} % Your first name
+\familyname{Masoumi Moghadam} % Your last name
+\title{Curriculum Vitae}
+%----------------------------------------------------------------------------------------
 
 \begin{document}
-	\makeheading{\textbf{Masoud Masoumi Moghadam}}
-	
-	\section{Contact Info}
-	\newlength{\rcollength}\setlength{\rcollength}{3in}%
-	%
-	\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
-		
-		Mashhad, Iran & masoud.masoumi.moghadam@gmail.com\\
-		+989151234749 & \href{http://www.linkedin.com/in/masoud-masoumi-moghadam/}{\textbf{LinkedIn Profile}}\\
-		
-		& \href{https://stackoverflow.com/users/story/6118987}{\textbf{StackOverFlow Profile}}\\
-		
-		& \href{https://github.com/masouduut94}{\textbf{Github Repository}}\\
-		
-		& \href{https://www.kaggle.com/masouduut94}{\textbf{Kaggle Repository}}\\
-		%& \textit{WWW:}
-		%\href{http://ee.sharif.edu/~mmahzoon}{ee.sharif.edu/\sim mmahzoon}\\
-	\end{tabular}
-	
-	\section{Research Interests}
-	\begin{loneinnerlist}
-		\item
-		Reinforcement Learning
-		\item
-		Comupter Vision
-		\item
-		Machine Learning
-		\item
-		Deep Learning
-		\item
-		Knowledge Distillation
-	\end{loneinnerlist}
-	
-	
-	%\end{loneinnerlist}%
-	
-	\blankline
-	
-	\section{Education}
-	\href{http://en.uut.ac.ir/}{\textbf{Urmia University of Technology}},
-	West Azerbaijan, Iran
-	\begin{outerlist}
-		\item[] Master of Science in
-		\href{http://en.uut.ac.ir/itTeacher}
-		{Information Technology Engineering},
-		Sep. 2015 -- Jan. 2018
-		\begin{innerlist}
-			%\item Thesis: \emph{}
-			\item \textbf{GPA: 4.11/5.0} (133 credit hours passed)
-			\item \textbf{Selected Coursework}: Artificial Neural Network (19/20) - Machine Learning (19.5/20) - Bio-Inspired Algorithm (19/20) - Pattern Recognition (14/20) - Game Theory (20/20) - Data Mining (16/20) - Advanced Computer Network (15/20) - Digital Image Processing (17/20) - Advanced Operational System (19/20) - E-Commerce (16/20)
-			\item Advisers:
-			\href{http://en.uut.ac.ir/upload/Teacher/electrical/resume/pourmahmod.pdf}
-			{Prof. \textbf{Mohammad Pourmahmoud Aghababa}}, \href{http://facultystaff.urmia.ac.ir/Site/CV.aspx?STID=274&Ln=en}
-			{Prof. \textbf{Jamshid Bagherzadeh}}
-			\item Thesis: \emph{Monte Carlo Tree Search Optimization using quality-based rewards and RAVE values}
-			\item Thesis details and source code: \href{https://github.com/masouduut94/MCTS-agent-python}{Monte Carlo Tree Search Agent for the Game of HEX},
-			
-		\end{innerlist}
-	\end{outerlist}
-	
-	\hfill \break
-	\href{https://aut.ac.ir/en}{\textbf{Payam Noor University of Neishaboor}},
-	Khorasan Razavi, Iran
-	\begin{outerlist}
-		\item[] Bachelor of Science in
-		\href{http://ent.pnu.ac.ir/portal/home/?415499/Payame-Noor-University}
-		{Information Technology Engineering},
-		Sep. 2007 -- Jan. 2014
-		\begin{innerlist}
-			\item GPA: 3.8/5.0
-		\end{innerlist}
-	\end{outerlist}
-	
-	\section{Computer Skills}
-	
-		 \textbf{\; C/C++, Python, R, PHP, MySQL, MATLAB}\\
-	
-	\section{Frameworks}
-		\textbf{\;\; PyTorch - Tensorflow - Keras - OpenCV - Caffe - MXnet - Gensim - NLTK - Numpy - CuPy - Sklearn - Scipy - Skimage - FFMpeg - Linux - Django}
-		\blankline
-	
-	\blankline
-	\section{Publications}
-	\begin{loneinnerlist}
-		\item \href{https://github.com/masouduut94/MCTS-agent-python/tree/master/paper}{\textbf{Improving Monte Carlo Tree Search by Combining RAVE and Quality-Based Rewards Algorithms}}, Urmia University of Technology, Dec 2017 - Feb 2018.
-			\begin{itemize}
-				\item[--]  In collaboration with Prof. Mohammad Pourmahmoud Aghababa and Dr. Jamshid Bagherzadeh.
-				
-			\end{itemize}
-		\item \href{https://medium.com/natix-io/real-time-pedestrian-tracking-service-for-surveillance-cameras-using-pytorch-and-flask-6bc9810a4cb8}{\textbf{An End-to-End Solution for Pedestrian Tracking on RTSP IP Camera feed Using Pytorch}}, Medium.com \\
-		
-		\item \href{https://towardsdatascience.com/monte-carlo-tree-search-a-case-study-along-with-implementation-part-1-ebc7753a5a3b}{\textbf{Monte Carlo Tree Search: Implementing Reinforcement Learning in Real-Time Game Player | Part 1 | Reinforcement Learning Basic Concepts}}, TowardsDataScience.com \\
-		
-		\item \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-25b6f6ac3b43}{\textbf{Monte Carlo Tree Search: Implementing Reinforcement Learning in Real-Time Game Player | Part 2 | Monte Carlo Tree Search Basic Concepts}}, TowardsDataScience.com \\
-		
-		\item \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{\textbf{Monte Carlo Tree Search: Implementing Reinforcement Learning in Real-Time Game Player | Part 3 | Implementation of the MCTS algorithm in Python}}, TowardsDataScience.com \\
-		
-	\end{loneinnerlist}
-	
-	\section{Work Experience}
-	\begin{loneinnerlist}
-		\item \textbf{Computer Vision Expert}— \href{https://www.linkedin.com/company/partdp-ai/about/}{\textbf{Television Content Analytics}} May 2021 -- Present
-		
-		\textbf{Contributions:} 
-		\begin{itemize}
-			
-			\item[--] Improved mAP@95 precision on multiple object detection models by 10 percent in cricket game using lightweight and state of the art architectures.
-			\item[--] Successfully replaced 2 stage object detector model by a state of the art model capable of real-time object detection which ended in a 10X times faster pipeline.
-			\item[--] Implemented heuristics for analytics over Batsman and Bowler player actions.
-			
-		\end{itemize}
-		
-		\item \textbf{Computer Vision Expert}— \href{https://www.linkedin.com/company/partdp-ai/about/}{\textbf{PartAI Reserch Center, Mahshhad, Iran}} Aug 2019 -- Jun 2021 ((1 year 11 months))
-		
-		\textbf{Contributions:} 
-		\begin{itemize}
-			
-			\item[--] \href{https://play.google.com/store/apps/details?id=ir.part.app.signal&hl=en_US}{\textbf{Signal application}}:  An advanced AI-based authentication system which includes 50 different solutions like face similarity detection, spoof attack detection, … .
-			\item[--] Increased the throughput of authentication pipeline by 1.5X utilizing lightweight AI solutions on inference
-			\item[--] Improved the algorithm precision of real-time Pedestrian/Vehicle tracking and ReIdentification system by 12\%.
-			\item[--] led a team responsible for deploying face recognition on embedded devices for automated catering.
-			\item[--] Researches in violence detection using spatio-temporal features and 3d convolutions.
-			\item[--] Saved a project entitled as "wind turbine damage spotting" from failure by managing both data gathering pipeline and continuous algorithm refinement and reach it to production.
-			\item[--] Contributed in Illegal construction detection service on aerial images (remote sensing) using attention mechanism on STAnet.
-			\item[--] Enhanced the forgery detection algorithm accuracy by 8\% by utilizing steganography features.
-			
-		\end{itemize}
-		
-		\item \textbf{Computer Vision Expert}— \href{https://www.natix.io}{\textbf{NATIX Edge vision, Hamburg, Germany}} Jun 2020 -- Dec 2020 (7 months)
-		
-		\begin{itemize}
-			\item[--] NATIX core concept is to utilize deep learning models on edge devices to detect relevant events and trigger corresponding actions afterward  so as to minimize the cloud dependency to diminish the customers` privacy concerns.
-			
-			List of projects:
-			\item[--] \href{https://www.natix.io/products/virtual-doorman}{\textbf{Virtual Doorman AI}}: Deployed face/mask detection service on Virtual Doorman AI.
-			\item[--] Continuous improvement to face/mask detection model by applying tflite quantization and noticeable speed up of inference throughput from 4 fps to 10 fps.
-			\item[--] Improved the area under PR curve by 22 percent for AI solution used in virtual doorman project.
-			\item[--] Contribute to NATIX mask detection app on IOS platform using Turi framework.
-		\end{itemize}
-		
-		\item \textbf{Data Scientist}— \href{https://neshan.org/}{\textbf{Neshan Maps, Mashhad, Iran}} Dec 2018 -- Jul 2019
-		
-		\begin{itemize}
-			\item[--] \href{https://play.google.com/store/apps/details?id=org.rajman.neshan.traffic.tehran.navigator&hl=en_US}{Neshan Maps application} is a professional platform that provides 2 major services for end users. Intelligent Transportation Service and location based services.
-			
-			Tasks which I participated mostly:
-			\item[--] Designing speed prediction agent for Improving Intelligent Transportation System
-			\item[--] Optimizing the routing system algorithm.
-			
-			
-		\end{itemize}
-		
-		\halfblankline
-		
-	\end{loneinnerlist}
-	
-	\section{Open source projects}
-	\begin{loneinnerlist}
-		
-		\item \textbf{Deep Sort with Pytorch on RTSP camera implementation }, \href{https://www.natix.io/}{Natix Edge Vision}, Dec 2019 - Apr 2020
-		\begin{itemize}
-			\item[--] In this project, I contributed to a pedestrian detection and tracking on live rtsp camera which protects users privacy since it's all processes are serverless.
-			\item[--] \href{https://medium.com/natix-io/real-time-pedestrian-tracking-service-for-surveillance-cameras-using-pytorch-and-flask-6bc9810a4cb8}{\textbf{Article: An End-to-End Solution for Pedestrian Tracking on RTSP IP Camera feed Using Pytorch}}
-			\item[--] \href{https://github.com/ZQPei/deep_sort_pytorch}{\textbf{Github repository: Deep Sort with PyTorch (1.3 K stars)}}
-		\end{itemize}
-		
-		\item \textbf{Monte Carlo Tree Search: Implementing Reinforcement Learning in Real-Time Game Player}, \href{https://partdp.ai/}{\textbf{PartAI Reserch Center}} Dec 2019 -- Jan 2020
-		
-		\begin{itemize}
-			\item[--] In this project, after I fully explained the basic concepts of reinforcement learning and its variant monte carlo tree search, I went through implementation of a basic no frills UCT algorithm in a board game named as HEX.
-			\item[--] \href{https://towardsdatascience.com/monte-carlo-tree-search-a-case-study-along-with-implementation-part-1-ebc7753a5a3b}{\textbf{Article 1: Basics of Reinforcement Learning}}
-			\item[--] \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-25b6f6ac3b43}{\textbf{Article 2: Basic Concepts of Monte Carlo Tree Search}}
-			\item[--] \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{\textbf{Article 3: Full implementation of framework in python}}
-			\item[--] \href{https://github.com/masouduut94/MCTS-agent-python}{\textbf{Github repository}}
-		\end{itemize}
-		
-		\halfblankline
-		\item \textbf{Performance Optimization of General Game Player using Cython and parallel simulation}, Urmia University of Technology, Jul 2016 - Nov 2016
-		\begin{itemize}
-			\item[--] In this project, I boosted up the performance of GGP python framework by using cython and C extensions.
-			\item[--] \href{https://github.com/masouduut94/MCTS-agent-cythonized}{\textbf{Github repository: Ultimate Version of Real-time General Game Player in game of HEX.}}
-		\end{itemize}
-		
-		
-		
-		\item \textbf{Training Multiple Deep Convolutional Neural Networks for Digikala Comment Verification dataset}, PartAI Research center, May 2019 - Jun 2019
-		\begin{itemize}
-			\item[--] \href{https://github.com/masouduut94/Digikala_comments_verification}{\textbf{Github repository}}
-		\end{itemize}
-		
-		\item \textbf{Using Genetic Algorithm to solve Traveling Salesman Problem (TSP) on NYC taxi dataset}, PartAI Research center, May 2019 - Jun 2019
-		\begin{itemize}
-			\item[--] \href{https://github.com/masouduut94/genetic-algorithm-trip-optimizer}{\textbf{Github repository: Genetic Algorithm Trip Optimizer}}
-		\end{itemize}
-		
-	\end{loneinnerlist}
-	
-	
-	\section{Teaching \\Experience}
-	\begin{loneinnerlist}
-		\item Teaching Assistant, \textbf{Data Mining}, Urmia University of Technology, Spring 2017\\
-		Supervisor:
-		\href{https://sarmady.com/siamak/}
-		{Prof. \textbf{Siamak Sarmady}}
-		\halfblankline
-		\\
-		\item Teaching Assistant, \textbf{Basics of Machine Learning with python}, PartAI research center, August 2020 - September 2020\\
-		
-		
-	\end{loneinnerlist}
-	
-	\blankline
-	
-	\section{Publications}
-	\begin{loneinnerlist}
-		\item \href{https://github.com/masouduut94/MCTS-agent-python/blob/master/paper/CONFITC04_172.pdf}{Improving Monte Carlo Tree Search By Combining RAVE and Quality-Based Rewards Algorithm.}
-		
-		\halfblankline
-		
-		\item \href{https://en.civilica.com/doc/779194/}{Web link to the indexed paper in journal of Civilica}
-	\halfblankline
-	
-	
-\end{loneinnerlist}
-\blankline
 
-\section{Extra- \\ curricular \\ Activities}
-\begin{loneinnerlist}
-	\item \textbf{The Lecturer of Machine Learning Workshop with Python}, PartAI research Center, May 2019
-	
-	\begin{itemize}
-		\item[--]  In this workshop, I presented the libraries of Python such as Numpy, Pandas, Scikit-Learn and Keras.
-	\end{itemize}
-	\blankline
-\end{loneinnerlist}
+\makecvtitle % Print the CV title
 
-	\section{References}
-	\begin{loneinnerlist}
-		
-		\item
-		\href{https://www.researchgate.net/scientific-contributions/Mohammad-Pourmahmood-Aghababa-78908453}
-		{Prof. \textbf{Mohammad Pourmahmoud Aghababa}} (m.p.aghababa@ee.uut.ac.ir)
-		
-		\item \href{http://uut.ac.ir/page.php?slct_pg_id=579&sid=2&slc_lang=fa}
-		{Dr. \textbf{Vahid Soluk}} (v.solouk@it.uut.ac.ir)
-		\item
-		\href{http://uut.ac.ir/page.php?slct_pg_id=1087&sid=2&slc_lang=fa}
-		{Dr. \textbf{Jafar Tahmoresnezhad}} (j.tahmores@it.uut.ac.ir)
-	\end{loneinnerlist}
-		
-		
-		%\blankline
-		\section{Hobbies}
-		\begin{loneinnerlist}
-			\item
-			Teaching
-			\item
-			Volleyball
-			\item
-			ping pong
-			\item
-			Mountain Climbing
-			\item
-			Reading books and poets
-		\end{loneinnerlist}
-		\end{document}
+%----------------------------------------------------------------------------------------
+%	PERSONAL SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Personal Information}
+
+\cvitem{Date of Birth}{\emph{Mar 19th, 1989}}
+\cvitem{Gender}{Male}
+\cvitem{Nationality}{IRAN}
+% \cvitem \href{https://github.com/masouduut94/MCTS-agent-python/tree/master/paper}{\textbf{Improving Monte Carlo Tree Search by Combining RAVE and Quality-Based Rewards Algorithms}}
+\cvitem{Address}{Khorasan Razavi, Mashhad City, Doktor Beheshti 40th st}
+\cvitem{Mobile}{(+98) 938 122 4749}
+\cvitem{Email}{m.m.moghadam@outlook.com}
+\cvitem{GitHub}{\href{https://github.com/masouduut94}{masouduut94}}
+\cvitem{Medium}{\href{https://medium.com/@m-m-moghadam}{m-m-moghadam}}
+\cvitem{Stackoverflow}{\href{https://stackoverflow.com/users/6118987/masoud-masoumi-moghadam?tab=topactivity}{masouduut94}}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+% /href{https://www.linkedin.com/in/m-m-moghadam/details/certifications/}{Certifications}
+\section{Education}
+
+\cvitem{2007--2014}{\textbf{Bachelor of Computer Science,} \textit{School of Information Technology,} Payam-e-Noor University, Neishabour.}
+\cvitem{}{GPA: 12.88/20}
+% \cventry{2008--Present}{Bachelor of Computer Science}{Hanoi University of Science and Technology}{School of Information and Communication Technology, Hanoi.}{\textit{GPA -- 8.0}}{}  % Arguments not required can be left empty
+% \cvitem{}{Class ICT56 -- ICT Program: program for Gifted Students; the curriculum is conducted in \textbf{English}.}
+
+\renewcommand{\listitemsymbol}{~~~~} % Changes the symbol used for lists
+
+% \cvlistdoubleitem{}{GPA: 3.41}
+\cvitem{2015--2017}{\textbf{Master of Computer Science,} \textit{Information Technology Faculty,} Urmia University of Technology.}
+\cvitem{}{GPA: 16.47/20}
+\cvitem{}{\textbf{Master Thesis: } \href{https://github.com/masouduut94/MCTS-agent-python}{Tree Search Optimization using Reinforcement Learning Techniques}}
+
+\cvitem{}{\textbf{Courses:} (Grading Scale 0--20)} 
+\renewcommand{\listitemsymbol}{\textcolor{black}{o~}}
+\cvlistitem{Game Theory,  (GPA: 17.60)}
+\cvlistitem{Bio-inspired Computing Algorithms, (GPA: 17.97)}
+\cvlistitem{Pattern Recognition, (GPA: 12.90)}
+\cvlistitem{Advanced Computer Networks, (GPA: 15.40)}
+\cvlistitem{General Artificial Intelligence, (GPA: 16.05)}
+\cvlistitem{Data Mining, (GPA: 15.50)}
+\cvlistitem{E-Commerce, (GPA: 17.25)}
+\cvlistitem{Information Technology Management, (GPA: 16.75)}
+\cvlistitem{Computer Vision Theory, (GPA: 16.05)}
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+% \subsection{Vocational}
+
+\cvitem{03/2021--present}{\textbf{Computer Vision Expert,} \textit{TVConal Startup,} Singapore.}
+\renewcommand{\listitemsymbol}{\textcolor{black}{o~}} % Changes the symbol used for lists
+\cvlistitem{Trained various object detection and segmentation models.\newline{}}
+
+\cvitem{10/2020--03/2021}{\textbf{Computer Vision Expert,} \textit{NATIX Startup,} Germany. }
+\renewcommand{\listitemsymbol}{\textcolor{black}{o~}} % Changes the symbol used for lists
+\cvlistitem{Trained multiple object detection model.\newline{}}
+
+\cvitem{11/2019--10/2020}{\textbf{Deep Learning Researcher,} \textit{PartAI Research Center,} IRAN.}
+\renewcommand{\listitemsymbol}{\textcolor{black}{o~}} % Changes the symbol used for lists
+\cvlistitem{Trained multiple object detection model.\newline{}}
+
+
+ % \subsection{Research}
+% \cvitem{11/2014}{\textbf{Participant,} \textit{ICTCC 2014 (International Conference on Nature of Computation and Communication),} Ho Chi Minh City.}
+% \cvlistitem{Research: Maximizing The Lifetime Of Wireless Sensor Networks With The Base Station Location.}
+% \cvitem{2014--Present}{\textbf{Research group,} \textit{Hanoi University of Science and Technology}, Hanoi.}
+% \cvlistitem{Research: Optimizing the base station location of WSNs with respect to different definitions of "the centroid".}
+
+
+% % ----------------------------- Achievements & Honours -----------------------------------
+
+\section{Projects \& Publications}
+
+\cvitem{9/2014}{\textbf{Certificate of Achievement,} \textit{JENESYS 2.0 Project - a Youth Exchange Programme,} Japan International Coorporation Center (JICE), Japan.}
+\cvitem{1/2014}{\textbf{Certificate of Achievement,} \textit{Go Green in the City 2014 Contest,} Hanoi University Of Science and Technology, Hanoi.}
+\renewcommand{\listitemsymbol}{} % Changes the symbol used for lists
+\cvlistitem{Proposed idea: Smart energy distribution system.}
+
+\cvitem{2012, 2013}{\textbf{University Scholarship,} \textit{for excellent achievement in academic year: 2011--2012, 2012--2013,} Hanoi University Of Science and Technology, Hanoi.}
+
+\cvitem{2011}{\textbf{Passed 2011 National University Entrance Examination,} \textit{Ministry of Education and Training.}}
+
+
+%----------------------------------------------------------------------------------------
+%	EXTRACURRICULAR SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Extracurricular Activities}
+
+\subsection{Athletic Activities}
+\cvitem{01/2017}{\textbf{Volleyball Team member,} \textit{Urmia University of Technology, }}
+\renewcommand{\listitemsymbol}{o~} % Changes the symbol used for lists
+\cvlistitem{\footnotesize Played as the setter in the IRAN Universities Volleyball Championship Competitions.\newline{}}
+
+\cvitem{05/2023}{\textbf{Volleyball Team member,} \textit{AhmadAbad Town Volleyball Team, }}
+% \renewcommand{\listitemsymbol}{o~} % Changes the symbol used for lists
+\cvlistitem{\footnotesize Played as Opposite Hitter and won the gold medal in the AhmadAbad Volleyball Competitions.\newline{}}
+
+\cvitem{05/2012}{\textbf{Taekwondo Competitor,} \textit{IRAN universities Taekwondo Championship Competitions, }\newline{}}
+
+\subsection{Writing}
+\cvitem{2017--present}{\textbf{Writer of Scientific Articles ,} \textit{Towards Data Science Publisher, }}
+\cvlistitem{\footnotesize Writing scientific articles about reinforcement learning and computer vision. \href{https://medium.com/@m-m-moghadam}{read my articles}\newline{}}
+
+\subsection{Robotics and programming}
+\cvitem{2010}{\textbf{AVR microcontroller programming ,} \textit{Mashhad Payam-e-Noor university, }}
+\cvlistitem{\footnotesize Participated in AVR Microcontroller programming with C++ dedicated for line-follower Robots.\newline{}}
+
+\cvitem{2010}{\textbf{Robotics Team Captain,} \textit{Mashhad Payam-e-Noor university, }}
+\cvlistitem{\footnotesize Participated in line follower Robotic competitions and won the 3rd place.\newline{}}
+
+\cvitem{2010}{\textbf{Web designing ,} \textit{Khalaghan Javan, }}
+\cvlistitem{\footnotesize Participated in 200 hours of PHP programming and successfully accomplished it with the best grade .\newline{}}
+
+
+%----------------------------------------------------------------------------------------
+%	SKILLS SECTION
+%----------------------------------------------------------------------------------------
+%\vspace{14mm}
+\section{Skills \& Background Knowledge}
+
+\subsection{Programming skills}
+
+\cvitem{Programming}{C/C++, PHP, Python, Javascript, Linux, TensorFlow, PyTorch, OpenCV, gym, gensim, transformers, Scikit-Learn, Scikit-Image \newline{}}
+\cvitem{Softwares}{Microsoft Office, Adobe Photoshop, Premiere, FL studio, \textsc{HTML/CSS}, }
+
+%----------------------------------------------------------------------------------------
+%	RESEARCH SECTION
+%----------------------------------------------------------------------------------------
+
+% \section{Research Interests}
+
+% \cvitem{}{Heuristic algorithm \& its application.}
+% \cvitem{}{Data mining.}
+% \cvitem{}{Internet Security.}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Languages}
+
+\cvitemwithcomment{Vietnamese}{Mothertongue}{}
+\cvitemwithcomment{English}{Intermediate}{Fluent in communicative and academic aspect}
+\cvitemwithcomment{}{}{HUST Institutional TOEIC: 570/990 (8/2013)}
+%\cvitem{}{Institutional TOEIC: 570, Hanoi University of Science and Technology, Date taken: 18/8/2013}
+\cvitemwithcomment{French}{Basic}{Basic words and phrases only}
+\cvitemwithcomment{Japanese}{Basic}{Basic words and phrases only}
+
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Interests}
+
+\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+
+\cvlistdoubleitem{Music \& Cooking}{Photograph}
+\cvlistdoubleitem{Science Related Documentaries}{Social Activities}
+\cvlistitem{American Sign Language}
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+%\clearpage
+
+%\recipient{HR Department}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+%\date{\today} % Letter date
+%\opening{Dear Sir or Madam,} % Opening greeting
+%\closing{Sincerely yours,} % Closing phrase
+%\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+
+%\makelettertitle % Print letter title
+
+%\lipsum[1-3] % Dummy text
+
+%\makeletterclosing % Print letter signature
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
