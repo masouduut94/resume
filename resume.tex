@@ -26,7 +26,7 @@
 \documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
 
 \moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
-\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey', and 'black'
 
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{hyperref}
@@ -68,8 +68,9 @@
 \cvitem{Address}{Khorasan Razavi, Mashhad City, Doktor Beheshti 40th st}
 \cvitem{Mobile}{(+98) 938 122 4749}
 \cvitem{Email}{m.m.moghadam@outlook.com}
-\cvitem{GitHub}{\href{https://github.com/masouduut94}{masouduut94}}
+\cvitem{Linkedin}{\href{https://www.linkedin.com/in/m-m-moghadam/}{m-m-moghadam}}
 \cvitem{Medium}{\href{https://medium.com/@m-m-moghadam}{m-m-moghadam}}
+\cvitem{GitHub}{\href{https://github.com/masouduut94}{masouduut94}}
 \cvitem{Stackoverflow}{\href{https://stackoverflow.com/users/6118987/masoud-masoumi-moghadam?tab=topactivity}{masouduut94}}
 
 %----------------------------------------------------------------------------------------
@@ -91,7 +92,7 @@
 \cvitem{}{\textbf{Master Thesis: } \href{https://github.com/masouduut94/MCTS-agent-python}{Tree Search Optimization using Reinforcement Learning Techniques}}
 
 \cvitem{}{\textbf{Courses:} (Grading Scale 0--20)} 
-\renewcommand{\listitemsymbol}{\textcolor{black}{o~}}
+\renewcommand{\listitemsymbol}{\textcolor{black}{- }}
 \cvlistitem{Game Theory,  (GPA: 17.60)}
 \cvlistitem{Bio-inspired Computing Algorithms, (GPA: 17.97)}
 \cvlistitem{Pattern Recognition, (GPA: 12.90)}
@@ -110,38 +111,76 @@
 % \subsection{Vocational}
 
 \cvitem{03/2021--present}{\textbf{Computer Vision Expert,} \textit{TVConal Startup,} Singapore.}
-\renewcommand{\listitemsymbol}{\textcolor{black}{o~}} % Changes the symbol used for lists
-\cvlistitem{Trained various object detection and segmentation models.\newline{}}
+\renewcommand{\listitemsymbol}{\textcolor{black}{- }} % Changes the symbol used for lists
+\cvlistitem{Innovated a real-time player foot fault detection system for cricket by building a pipeline of several video classification \& object detection models; Attained 92\% AUC-PR curve score, and reduced the manual work by 80\% for the video referees.\newline{}}
+
+\cvlistitem{Built a pipeline to run an action recognition model to slice the stream cricket videos into its bowling and batting actions; 100\% accuracy on run-out cameras; 98\% accuracy on LBW cameras.\newline{}}
+
+\cvlistitem{Enhanced the inference performance on shoe/ball/batsman detection in cricket project by converting TensorFlow models into TensorRT optimized ones. increased overall speed by 3x. \newline{}}
+
+\cvlistitem{Extract KPIs and analysis charts from table tennis videos.\newline{}}
 
 \cvitem{10/2020--03/2021}{\textbf{Computer Vision Expert,} \textit{NATIX Startup,} Germany. }
-\renewcommand{\listitemsymbol}{\textcolor{black}{o~}} % Changes the symbol used for lists
-\cvlistitem{Trained multiple object detection model.\newline{}}
+\renewcommand{\listitemsymbol}{\textcolor{black}{- }} % Changes the symbol used for lists
+\cvlistitem{Deployed and maintained a mask detection model in \href{https://medium.com/natix-io/introducing-natix-virtual-doorman-af378e2c3803}{NATIX virtual doorman project}; enhanced the PR curve over 14\% in comparison to prototype.\newline{}}
+
+\cvlistitem{Deployed mask detection model on IOS device after optimizing the model inference by 2X using model quantization.\newline{}}
 
 \cvitem{11/2019--10/2020}{\textbf{Deep Learning Researcher,} \textit{PartAI Research Center,} IRAN.}
-\renewcommand{\listitemsymbol}{\textcolor{black}{o~}} % Changes the symbol used for lists
-\cvlistitem{Trained multiple object detection model.\newline{}}
+\renewcommand{\listitemsymbol}{\textcolor{black}{- }} % Changes the symbol used for lists
+\cvlistitem{Optimized face recognition and gesture recognition model by tensorRT and deployed them on an online authentication application. \newline{}}
+
+\cvlistitem{ Led and supervised the R\&D team to deploy a face identification model in a catering system. Saved 100\% of the paperwork. \newline{}}
+
+\cvlistitem{ Implemented person tracking on real-time footage from RTSP camera; it is open-sourced \href{https://medium.com/natix-io/real-time-pedestrian-tracking-service-for-surveillance-cameras-using-pytorch-and-flask-6bc9810a4cb8}{here}. (\href{https://medium.com/natix-io/real-time-pedestrian-tracking-service-for-surveillance-cameras-using-pytorch-and-flask-6bc9810a4cb8}{Github repo} with 2.6K stars!).  
+ \newline{}}
+ 
+\cvlistitem{ Trained, tested, and maintained the full cycle of the deep learning model in Wind Turbine blade damage segmentation; \newline{}}
+
+\cvlistitem{ Trained and tested a remote sensing model to detect the environmental changes and utilized it to detect the city's illegal constructions on GIS images; Reduced the manual work by at least 70\%. \newline{}}
+
+% % ----------------------------- Achievements & Honours -----------------------------------
 
 
- % \subsection{Research}
-% \cvitem{11/2014}{\textbf{Participant,} \textit{ICTCC 2014 (International Conference on Nature of Computation and Communication),} Ho Chi Minh City.}
-% \cvlistitem{Research: Maximizing The Lifetime Of Wireless Sensor Networks With The Base Station Location.}
-% \cvitem{2014--Present}{\textbf{Research group,} \textit{Hanoi University of Science and Technology}, Hanoi.}
-% \cvlistitem{Research: Optimizing the base station location of WSNs with respect to different definitions of "the centroid".}
+\section{Projects}
+
+\cvitem{2021}{Forgery Detection by using extracted ELA features. \href{https://www.kaggle.com/code/masouduut94/forgery-detection-by-using-extracted-ela-features}{Kaggle notebook}}
+
+\cvitem{2021}{A comprehensive image classification using TensorFlow modules, tf-explain, tf-data, and albumentation, \href{https://www.kaggle.com/code/masouduut94/tensorflow-a-comprehensive-image-classification}{Kaggle notebook}}
+
+\cvitem{2021}{An End-to-End Solution for Pedestrian Tracking on RTSP IP Camera feed Using Pytorch, DeepSort and Redis, \href{https://github.com/ZQPei/deep_sort_pytorch}{GitHub repo 3K stars} - \href{https://medium.com/natix-io/real-time-pedestrian-tracking-service-for-surveillance-cameras-using-pytorch-and-flask-6bc9810a4cb8}{Medium article}}
+
+\cvitem{2020}{NLP Project: Data wrangling and text verification model to verify the \href{https://www.digikala.com/}{Digikala online shop} user comments, \href{https://github.com/masouduut94/MCTS-agent-python}{GitHub repo}}
+
+\cvitem{2020}{Paper Implementation: Genetic Algorithm Trip Optimizer, \href{https://github.com/masouduut94/MCTS-agent-python}{GitHub repo}}
+\cvlistitem{My custom implementation of the paper:  \href{https://link.springer.com/chapter/10.1007/978-3-642-20282-7_42}{Taxi Pick-Ups Route Optimization Using Genetic Algorithms} }
+
+\cvitem{2018}{Monte Carlo Tree Search Agent for the Game of HEX, \href{https://github.com/masouduut94/MCTS-agent-python}{GitHub repo}}
+
+\cvitem{2018}{A comprehensive image classification using TensorFlow modules, tf-Explain, tf-data, and Albumentation, \href{https://www.kaggle.com/code/masouduut94/tensorflow-a-comprehensive-image-classification}{Kaggle notebook}}
 
 
 % % ----------------------------- Achievements & Honours -----------------------------------
 
-\section{Projects \& Publications}
+\section{Publications}
 
-\cvitem{9/2014}{\textbf{Certificate of Achievement,} \textit{JENESYS 2.0 Project - a Youth Exchange Programme,} Japan International Coorporation Center (JICE), Japan.}
-\cvitem{1/2014}{\textbf{Certificate of Achievement,} \textit{Go Green in the City 2014 Contest,} Hanoi University Of Science and Technology, Hanoi.}
-\renewcommand{\listitemsymbol}{} % Changes the symbol used for lists
-\cvlistitem{Proposed idea: Smart energy distribution system.}
+\subsection{Academic Papers}
 
-\cvitem{2012, 2013}{\textbf{University Scholarship,} \textit{for excellent achievement in academic year: 2011--2012, 2012--2013,} Hanoi University Of Science and Technology, Hanoi.}
+\cvitem{2018}{\textbf{Improving Monte Carlo Tree Search by Combining RAVE and Quality-Based Rewards Algorithms,} \textit{Civilica publications }}
+\renewcommand{\listitemsymbol}{- } % Changes the symbol used for lists
+\cvlistitem{\footnotesize \href{https://civilica.com/doc/779194/}{Link to article}}
+\cvlistitem{\footnotesize \href{https://github.com/masouduut94/MCTS-agent-python/blob/master/paper/CONFITC04_172.pdf}{Download it here}}
+\cvlistitem{\footnotesize \href{https://github.com/masouduut94/MCTS-agent-python}{Github project} (28 stars)}
 
-\cvitem{2011}{\textbf{Passed 2011 National University Entrance Examination,} \textit{Ministry of Education and Training.}}
+\subsection{Top Articles in Medium}
 
+\cvitem{2021}{ Monte Carlo Tree Search: Implementing Reinforcement Learning in Real-Time Game Player | Part 3 \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{Medium article}}
+
+\cvitem{2021}{ Monte Carlo Tree Search: Improving the roll-outs using the Rapid Action Value Estimation (RAVE) algorithm \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{Medium article}}
+
+\cvitem{2021}{ Monte Carlo Tree Search: Improving the roll-outs using the Decisive Move, Last Good Reply (LGR), and PoolRAVE algorithms. \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{Medium article}}
+
+\cvitem{2021}{ Essential Linux Command-Line Tricks for Computer Vision Researchers. \href{https://towardsdatascience.com/essential-linux-command-line-tricks-for-computer-vision-researchers-27d4f013d9a}{Medium article}}
 
 %----------------------------------------------------------------------------------------
 %	EXTRACURRICULAR SECTION
@@ -151,12 +190,12 @@
 
 \subsection{Athletic Activities}
 \cvitem{01/2017}{\textbf{Volleyball Team member,} \textit{Urmia University of Technology, }}
-\renewcommand{\listitemsymbol}{o~} % Changes the symbol used for lists
+\renewcommand{\listitemsymbol}{- } % Changes the symbol used for lists
 \cvlistitem{\footnotesize Played as the setter in the IRAN Universities Volleyball Championship Competitions.\newline{}}
 
 \cvitem{05/2023}{\textbf{Volleyball Team member,} \textit{AhmadAbad Town Volleyball Team, }}
-% \renewcommand{\listitemsymbol}{o~} % Changes the symbol used for lists
-\cvlistitem{\footnotesize Played as Opposite Hitter and won the gold medal in the AhmadAbad Volleyball Competitions.\newline{}}
+% \renewcommand{\listitemsymbol}{- } % Changes the symbol used for lists
+\cvlistitem{\footnotesize Played as Opposite Hitter and won the gold medal in the Ahmadabad Volleyball Competitions.\newline{}}
 
 \cvitem{05/2012}{\textbf{Taekwondo Competitor,} \textit{IRAN universities Taekwondo Championship Competitions, }\newline{}}
 
@@ -202,12 +241,12 @@
 
 \section{Languages}
 
-\cvitemwithcomment{Vietnamese}{Mothertongue}{}
-\cvitemwithcomment{English}{Intermediate}{Fluent in communicative and academic aspect}
-\cvitemwithcomment{}{}{HUST Institutional TOEIC: 570/990 (8/2013)}
+\cvitemwithcomment{Persian}{Mothertongue}{}
+\cvitemwithcomment{English}{Professional}{Fluent in communicative and academic aspect}
+% \cvitemwithcomment{}{}{HUST Institutional TOEIC: 570/990 (8/2013)}
 %\cvitem{}{Institutional TOEIC: 570, Hanoi University of Science and Technology, Date taken: 18/8/2013}
-\cvitemwithcomment{French}{Basic}{Basic words and phrases only}
-\cvitemwithcomment{Japanese}{Basic}{Basic words and phrases only}
+\cvitemwithcomment{Azeri}{Basic}{Basic words and phrases only}
+\cvitemwithcomment{Turkish}{Basic}{Basic words and phrases only}
 
 
 %----------------------------------------------------------------------------------------
@@ -218,9 +257,9 @@
 
 \renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
 
-\cvlistdoubleitem{Music \& Cooking}{Photograph}
-\cvlistdoubleitem{Science Related Documentaries}{Social Activities}
-\cvlistitem{American Sign Language}
+\cvlistdoubleitem{Volleyball}{Writing}
+\cvlistdoubleitem{Social Activities}{Ping Pong}
+\cvlistitem{Dancing}{}
 
 %----------------------------------------------------------------------------------------
 %	COVER LETTER
