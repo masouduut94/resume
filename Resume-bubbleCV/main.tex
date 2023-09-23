@@ -1,0 +1,152 @@
+\documentclass{article}
+\usepackage{bubblecv}
+\usepackage{graphicx}
+% \usepackage{fontawesome5}
+\begin{document}
+
+\graphicspath{ {./images/} }
+% \photo[]{}{}
+
+\begin{cv}[avatar]{Masoud Masoumi Moghadam}{Computer Vision Expert}
+% \photo[][]{https://i.stack.imgur.com/MZvTG.jpg?s=256&g=1}
+
+% \cvsection[summary]{Profile}  %-----------------------------------------------------------
+
+% A highly skilled secret agent with a license to kill. 
+% Bringing together outstanding combat and intelligence abilities with a charismatic and persuasive personality. 
+% A dedicated and adaptable professional committed to global security.
+
+
+\cvsection[work]{Work experience}  %------------------------------------------------------
+
+\begin{cvevent}[03/2021][present]
+    \cvname{Computer Vision Expert}
+    \cvdescription{TVConal Sports Analytics, Singapore}
+    \begin{itemize}
+        \item Deployed a real-time player foot fault detection system for DRS (decision review system) in cricket. Attained 92\% AUC score.\vspace{7pt}
+        
+        \item Optimized the ball tracking inference speed to 400 fps in cricket and table tennis projects by TensorRT conversion.\vspace{7pt}
+        
+        \item Trained, tested, and deployed action recognition models for various tasks like table tennis shot types recognition, and delivery slicing in cricket. 95\% accuracy/recall \vspace{7pt}
+        
+        \item Used deep learning models to run analysis on sports event video streams to measure KPIs for the coach dashboard and draw charts on the broadcast video for fan engagement. \vspace{7pt}
+    \end{itemize}
+\end{cvevent}
+
+% Add details
+\begin{cvevent}[10/2020][03/2021]
+    \cvname{Computer Vision Expert}
+    \cvdescription{NATIX startup, Frankfurt}
+    \begin{itemize}
+        \item  Developed and maintained a mask detection model for \href{https://medium.com/natix-io/introducing-natix-virtual-doorman-af378e2c3803}{NATIX virtual doorman} project project; enhanced the PR curve by 14\% \vspace{7pt}
+        
+        \item Trained and deployed the mask detection model on IOS device using Turi-create.\vspace{7pt}
+        
+    \end{itemize}
+\end{cvevent}
+
+% Add details
+\begin{cvevent}[11/2019][10/2020]
+    \cvname{Machine Learning Engineer}
+    \cvdescription{PartAI Research Center, Mashhad}
+    \begin{itemize}
+        \item Trained and deployed face recognition and gesture recognition models for \href{https://cafebazaar.ir/app/ir.part.app.signal}{"Signal app"} remote identity proofing; obtained 98\% on PR curve score; \vspace{7pt}
+        
+        \item Led and supervised the automated catering system project in which a siamese network model was deployed for user verification. \vspace{7pt}
+        
+        \item Implemented person tracking on real-time footage from RTSP camera; it is open-sourced \href{https://github.com/ZQPei/deep_sort_pytorch}{here} . (2.6K stars!).\vspace{7pt}
+        
+        \item Trained damage segmentation models in the wind turbine blade damage detection project to assess the costs;\vspace{7pt}
+
+        \item Built a model that is able to detect illegal constructions on GIS images; Reduced the manual work by at least 70%.;\vspace{7pt}
+        
+    \end{itemize}
+\end{cvevent}
+
+
+\cvsection[education]{Education}  %------------------------------------------------------
+
+\begin{cvevent}[10/2020][03/2021] %--03/2021
+    \cvname{Urmia University of Technology}
+    \cvdescription{Information Technology, Master of science}
+    \textbf{Thesis:}
+    \begin{itemize}
+        \item \href{https://github.com/masouduut94/MCTS-agent-python}{MCTS Optimization using quality-based rewards}\vspace{7pt}
+    \end{itemize}
+\end{cvevent}
+
+
+\cvsidebar %-----------------------------------------------------------------------------
+
+
+\cvsection[contact]{Contact}  %----------------------------------------------------------
+% \faIcon[regular]{folder-open}
+\begin{cvitem}[Envelope][4]
+    % \textbf{Email}\\
+    \href{mailto:m-m-moghadam@outlook.com}{\texttt{m-m-moghadam@outlook.com}}
+\end{cvitem}
+
+\cvseparator[3]
+\begin{cvitem}[Phone][4]
+    % \textbf{Phone}\\
+    \href{tel:+989381224749}{\texttt{+98 938 122 4749}}
+\end{cvitem}
+
+% Replace it with the LinkedIn logo and address...
+\cvseparator[3]
+\begin{cvitem}[Linkedin][4]
+    % \textbf{LinkedIn}\\
+    \href{https://www.linkedin.com/in/m-m-moghadam/}{linkedin.com/m-m-moghadam}
+\end{cvitem}
+
+% Replace the logo and the link with GitHub or Medium...
+\cvseparator[3]
+\begin{cvitem}[Medium][4]
+    % \textbf{Website}\\
+    \href{https://medium.com/@m-m-moghadam}{\texttt{medium.com/@m-m-moghadam}}
+\end{cvitem}
+
+\cvseparator[3]
+\begin{cvitem}[Github][4]
+    % \textbf{Website}\\
+    \href{https://github.com/masouduut94}{\texttt{github.com/masouduut94}}
+\end{cvitem}
+
+\cvsection[skills]{Skills}  %-----------------------------------------------------------
+
+\begin{itemize}
+    \item Python %\vspace{7pt}
+    \item C++ %\vspace{7pt}
+    \item Linux %\vspace{7pt}
+    \item OpenCV %\vspace{7pt}
+    \item FFmpeg %\vspace{7pt}
+    \item TensorFlow %\vspace{7pt}
+    \item PyTorch %\vspace{7pt}
+    \item TensorRT %\vspace{7pt}
+    \item PyAV %\vspace{7pt}
+    \item Docker %\vspace{7pt}
+    \item Scikit-image %\vspace{7pt}
+    \item Scikit-learn %\vspace{7pt}
+\end{itemize}
+
+
+% \cvseparator
+% \begin{cvitem}
+%     Scikit-Learn
+% \end{cvitem}
+
+
+\cvsection[languages]{Languages}  %--------------------------------------------------------
+
+\cvskill{Persian}{Fluent}{1.0}
+\cvskill{English}{Fluent}{1.0}
+\cvskill{Azeri}{Intermediate}{0.6}
+\cvskill{Turkish}{Basic}{0.3}
+
+\end{cv}
+
+% \cvfootnote{
+%     \tiny I agree to the processing of personal data provided in this document for realizing the recruitment process pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)
+% }
+
+\end{document}
