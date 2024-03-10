@@ -21,6 +21,36 @@
 % default. If you get compilation errors saying a font is missing, find the line
 % on which the font is used and either change it to a font included with your
 % operating system or comment the line out to use the default font.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TODO:
+% 1. Add various styling and section options and allow for multiple pages smoothly.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% CHANGELOG:
+% v1.3:
+% 1. Removed MacFonts version as I have no desire to maintain it nor access to macOS
+% 2. Switched column ordering
+% 3. Changed font styles/colors for easier human readability
+% 4. Added, removed, and rearranged sections to reflect my own experience
+% 5. Hid last updated
+%
+% v1.2:
+% 1. Added publications in place of societies.
+% 2. Collapsed a portion of education.
+% 3. Fixed a bug with alignment of overflowing long last updated dates on the top right.
+%
+% v1.1:
+% 1. Fixed several compilation bugs with \renewcommand
+% 2. Got Open-source fonts (Windows/Linux support)
+% 3. Added Last Updated
+% 4. Move Title styling into .sty
+% 5. Commented .sty file.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 % Known Issues:
 % 1. Overflows onto second page if any column's contents are more than the vertical limit
 % 2. Hacky space on the first bullet point on the second column.
@@ -30,12 +60,9 @@
 
 \documentclass[]{deedy-resume-reversed}
 \usepackage{fancyhdr}
-\usepackage[document]{ragged2e}
-% \usepackage{hyperref}
-\usepackage[none]{hyphenat} % No breaking words with hyphen
+
 \pagestyle{fancy}
 \fancyhf{}
-
 
 \begin{document}
 
@@ -52,7 +79,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \namesection{Masoud Masoumi Moghadam}{ %\urlstyle{same}\href{http://example.com}{example.com}| \href{http://example2.co}{example2.co}\\
-\href{mailto:m-m-moghadam@outlook.com}{m-m-moghadam@outlook.com} | \href{tel:+989381224749}{+989381224749}
+\href{mailto:zacharydtaylor1997@gmail.com}{m-m-moghadam@outlook.com} | \href{tel:16156635675}{09381224749}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,62 +88,43 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{minipage}[t]{0.57\textwidth}
-% \href{https://github.com/ZQPei/deep_sort_pytorch}{here}
+\begin{minipage}[t]{0.60\textwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     EXPERIENCE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Experience}
-\runsubsection{Computer Vision Engineer} \workingperiod{ May 2021 – Present}
-\descript{TVConal Sports Analytics, Singapore}
-
-\vspace{\topsep} % Hacky fix for awkward extra vertical space 
-\vspace{6pt}
+\runsubsection{TVConal Sports Analytics}
+\descript{| Computer Vision Expert }
+\location{May 2021 – Present | Singapore}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
 \begin{tightemize}
-\item Developed a real-time player leg fault detection solution for cricket's DRS (decision review system). Attained 92\% AUC score. \vspace{3pt}
-
-\item Optimized the ball tracking inference speed to 450 fps in cricket and table tennis projects by TensorRT conversion. \vspace{3pt}
-
-\item Fine-tuned several action recognition models for various tasks like table tennis shot type recognition, and delivery slicing in cricket. 95\% accuracy/recall. \vspace{3pt}
-
-\item Built an end-to-end solution for coach dashboard KPIs measurement which uses deep learning models to extract interesting details from sports event broadcast videos and translate them to coach needs.
-% \item Developed a cloud-based solution to automate and enhance the engineering process for network installation using AWS and Python.
-% \item Worked with other teams to create a system to collect and visualize telemetry data of network elements in real-time using AWS, Python, and DOMO.
-% \item Consulted with other teams to jump-start cloud-technology adoption and solutions throughout the company.
-% \item Contributed to initial planning for an optics-alignment system utilizing AWS, reinforcement learning, and an IoT architecture.
+\item Collaborated in a real-time decision review system (DRS) for Cricket.
+\item Contributed to building an end-to-end system for a real-time fault detection system in cricket sport that determines players' overstepping and over-extension faults. \color{hyperlinks}\href{https://ieeexplore.ieee.org/abstract/document/10356526}{More details are available in the paper}.
+\item Deployed a deep-learning solution for volleyball game analytics and \href{https://github.com/masouduut94/volleyball_analytics}{open-sourced here}.
+\item Trained ball tracking for table tennis and reduced its latency using TensorRT conversion; Improved the inference speed to 150 fps.
 \end{tightemize}
 \sectionsep
 
-\runsubsection{Computer Vision Engineer} \workingperiod{Aug 2020 – Dec 2020}
-\descript{PART-AI Research Center, Iran}
+\runsubsection{PartAI Research Center}
+\descript{| Computer Vision Expert }
+\location{Jan 2019 – Apr 2021 |IRAN}
 \begin{tightemize}
-
-\item Trained and deployed face recognition and gesture recognition models for \href{https://cafebazaar.ir/app/ir.part.app.signal}{Signal app} remote identity proofing; obtained 98\% on PR curve score. \vspace{3pt}
-
-\item Led and supervised the team to deploy a Siamese network model to enable user biometric identity verification on a catering system; Automated the whole manual system. \vspace{3pt}
-
-\item Implemented person tracking on real-time footage from RTSP camera; it is open-sourced \href{https://github.com/ZQPei/deep_sort_pytorch}{here}. \vspace{3pt}
-
-\item Trained damage segmentation models in the wind turbine blade damage detection project to assess the costs. \vspace{3pt}
-
-\item Built a model that is able to detect illegal constructions on GIS images; Reduced the manual work by at least 70%. \vspace{3pt}
+\item Trained and deployed face recognition and gesture recognition models for Signal app remote identity proofing; obtained 98\% on PR-curve score.
+\item Led and supervised the team to deploy a Siamese network model to enable user biometric identity verification on a catering system; Fully automated the daunting manual tasks. 
+\item Implemented person tracking on real-time footage from RTSP camera; it is \href{https://github.com/ZQPei/deep_sort_pytorch}{open-sourced here}.
+\item Deployed an end-to-end system that utilizes segmentation models that can detect damages in wind turbine blades.
 
 
-% \item Coordinated with multiple departments to lead a software product evaluation resulting in a fit-for-purpose verdict and provided a recommendation on moving forward.
-% \item Organized meetings with the vendor to receive in-depth product information and answers to cross-departmental questions.
-% \item Participated on the Web Development Taskforce to provide AngularJS sites to internal customers.
-% \item Participated in an internal CodeJam to prototype a blockchain application for managing a model supply-chain.
-% \item Worked with a team to plan executive visit and team-building exercise for 200 employees.
 \end{tightemize}
 \sectionsep
 
-\runsubsection{Computer Vision Expert} \workingperiod{Aug 2020–Dec 2020}
-\descript{NATIX startup, Germany}
+\runsubsection{NATIX startup}
+\descript{| Computer Vision Engineer }
+\location{Aug 2020 – Dec 2020 | Germany, Frankfurt}
 \begin{tightemize}
-\item Developed and maintained a mask detection model for \href{https://medium.com/natix-io/introducing-natix-virtual-doorman-af378e2c3803}{NATIX virtual doorman} project; enhanced the PR curve by 14\%
-
+\item Developed and maintained a mask detection model for the NATIX \href{https://medium.com/natix-io/introducing-natix-virtual-doorman-af378e2c3803}{virtual doorman project}; enhanced the PR curve by 14\%.
 \end{tightemize}
 \sectionsep
 
@@ -125,27 +133,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Projects}
-\runsubsection{Monte Carlo Tree Search agent for the game of HEX}
-\location{Jan 2018}
+\runsubsection{\href{https://github.com/masouduut94/volleyball_analytics}{Volleyball Analytics}}
+\descript{| Lead Developer}
+\location{Oct 2023 – Mar 2024 }
 \begin{tightemize}
-\item Developed an RL-based bot for the game of HEX. I have written 6 articles about its design. \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{Read more on towardsdatascience}.
-\end{tightemize}
-\sectionsep
-\runsubsection{An End-to-End Solution for Pedestrian Tracking on RTSP IP Camera feed Using Pytorch}
-\location{May 2020}
-\begin{tightemize}
-\item Developed a serverless approach to support deepsort tracking on a local environment. \href{https://medium.com/natix-io/real-time-pedestrian-tracking-service-for-surveillance-cameras-using-pytorch-and-flask-6bc9810a4cb8}{Read more on medium}.
+\item Trained, tested, and successfully deployed video classification model in real-time application to detect volleyball events. 
+\item Fine-tuned yolov8 for volleyball-specific object detection, and improved the inference speed by TensorRT compression.
 \end{tightemize}
 \sectionsep
 
-% \runsubsection{Chit Chat}
-% \descript{| Class Project for Distributed Client-Server Programming}
-% \location{Jan 2018 – May 2018 | Mississippi State, MS}
-% \begin{tightemize}
-% \item Lead the development of \textbf{\href{http://www.chit-chat.net/}{Chit Chat}}, an anonymous chat application created as a class project.
-% \item Chit Chat provides real-time communication using a PHP backend and AngularJS frontend.
-% \end{tightemize}
-% \sectionsep
+\runsubsection{\href{https://github.com/masouduut94/MCTS-agent-python}{HexPy game player} }
+\descript{| MSc thesis project}
+\location{Jan 2015 – Jan 2018}
+\begin{tightemize}
+\item Successfully built a reinforcement learning-based game player engine and further implemented over 10 different algorithms for the benchmark.
+\item You can read more about the algorithms and implementations in my \href{https://towardsdatascience.com/monte-carlo-tree-search-implementing-reinforcement-learning-in-real-time-game-player-a9c412ebeff5}{towardsdatascience articles}.
+\end{tightemize}
+\sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     RESEARCH
@@ -219,7 +223,7 @@
 
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.37\textwidth}
+\begin{minipage}[t]{0.33\textwidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     EDUCATION
@@ -227,9 +231,11 @@
 
 \section{Education}
 
-\subsection{Urmia University of Technology} \workingperiod{2015-2018}
-\descript{Master of Science in Information Technology, Iran} \vspace{10pt}
-Thesis: \href{https://github.com/masouduut94/MCTS-agent-python}{Optimization of Tree Search with Reinforcement Learning based Algorithms} \\
+\subsection{Urmia University of Technology}
+\descript{Master of Science in Information of Technology}
+\location{Urmia, IRAN}
+% College of Engineering \\
+Thesis: \href{https://github.com/masouduut94/MCTS-agent-python}{Optimization of Tree Search with Reinforcement Learning-based Algorithms}
 \location{ Cum. GPA: 3.8 / 4.0}
 \sectionsep
 
@@ -239,101 +245,46 @@ Thesis: \href{https://github.com/masouduut94/MCTS-agent-python}{Optimization of 
 
 \section{Skills}
 \subsection{Programming}
-\location{5+ years:}
-\textbullet{} TensorFlow \hfill 
-\textbullet{} PyTorch \hfill
-\textbullet{} OpenCV \\ 
-\textbullet{} Scikit-image \hfill
-\textbullet{} PyAV  \hfill
-\textbullet{} FFmpeg \\ 
-\textbullet{} SciKit-Learn \hfill
-\textbullet{} Numpy \hfill
-\textbullet{} Pandas \\ 
-\textbullet{} SQLAlchemy \hfill
-\textbullet{} PyCaret \hfill
-\textbullet{} Scrapy \\
-\textbullet{} Matplotlib \hfill
-\textbullet{} Scipy \hfill
-\textbullet{} Ggplot \\
-\textbullet{} Plotly
-
-% Gensim
-% TensorRT
-
-% TensorFlow
-% PyTorch
-% NumPy
-% Pandas
-% SciPy
-
-% PyCaret
-% SQLAlchemy
-% Tornado
-% Django
-% Scrapy
-% FastAPI
-% Matplotlib
-% Ggplot
-% Plotly
-% Object Detection
-% Object Segmentation
-% GANs
-% One-shot Learning
-
-
-
-\location{1+ years:}
-\textbullet{} C++  \hfill
-\textbullet{} Tornado \hfill
-\textbullet{} Django \\
-\textbullet{} RabbitMQ \hfill
-\textbullet{} Flask \hfill
-\textbullet{} FastAPI \\
-% \location{0+ years:}
-% Matlab \textbullet{} PHP \textbullet{} SAS \\
+\location{}
+Python \textbullet{} C/C++ \\
+PHP \textbullet{} JavaScript \\
 \sectionsep
 
 \subsection{Technology}
-\textbullet{} Github \textbullet{} AWS \textbullet{} Linux \\ 
-\textbullet{} Generative AIs \textbullet{} NLP \textbullet{} OpenVino \\
+\textbullet{Git}  \textbullet{AWS}  \textbullet{Linux}  \\
+\textbullet{Tensorflow}  \textbullet{PyTorch}  \\
+\textbullet{ffmpeg} \textbullet{Pandas} \textbullet{OpenCV}  \\
+\textbullet{Django/Flask}  \textbullet{FastAPI}  \\
+\textbullet{OpenVino}
 \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     COURSEWORK
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Relevant Coursework}
-\subsection{MSc Courses} \vspace{4pt}
-\textbullet{} Bio-inspired Algorithms \\
-\textbullet{} General Neural Network \\
-\textbullet{} Computer Vision \\
-\textbullet{} Data Mining \\
-\textbullet{} Pattern Recognition \\
-\textbullet{} Game Theory \\
-\textbullet{} Advanced Computer Networks
+\section{Coursework}
+\subsection{MSc courses}
 \sectionsep
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Societies
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbullet{} Bio-Inspired Algorithms \\
+\textbullet{} General Neural Network \\
+\textbullet{} Advanced Computer Networks \\
+\textbullet{} Pattern Recognition \\
+\textbullet{} Data Mining \\
+\textbullet{} Image Processing \\
 
-% \section{Societies}
-% Association for Computing Machinery (ACM)\\
-% Scrum Alliance Certified ScrumMaster\\
-% Shackouls Honors College\\
-% National Merit Scholarship Finalist \\
-% \sectionsep
+\sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     LINKS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Links}
-\textbullet{} LinkedIn:   \href{https://www.linkedin.com/in/m-m-moghadam/}{\bf m-m-mogahdam} \\
-\textbullet{} Github:  \href{https://github.com/masouduut94}{\bf masouduut94} \\
-\textbullet{} Medium: \href{https://m-m-moghadam.medium.com/}{m-m-moghadam}\\
-\textbullet{} Stackoverflow:  \href{https://stackoverflow.com/users/6118987/masoud-masoumi-moghadam}{\bf masouduut94} \\
-\textbullet{} Kaggle: \href{https://www.kaggle.com/masouduut94}{\bf m-m-mogahdam}
+\textbullet{} LinkedIn Account:\href{https://www.linkedin.com/in/m-m-moghadam/}{\bf \hfill m-m-moghadam} \\
+\textbullet{} Github Account:\href{https://github.com/masouduut94}{\bf \hfill  masouduut94} \\
+\textbullet{} Medium Articles:\href{https://m-m-moghadam.medium.com/}{\bf \hfill m-m-moghadam} \\
+\textbullet{} Kaggle Notebooks:\href{https://www.kaggle.com/masouduut94}{\bf \hfill m-m-moghadam} \\
+\textbullet{} StackOverFlow Profile:\href{https://stackoverflow.com/users/6118987/masouduut94}{\bf \hfill masouduut94} \\
 \sectionsep
 
 \end{minipage}
